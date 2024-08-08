@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.get("/api/blogs", [auth, adminMiddleWare], BlogsController.get);
 router.post("/api/blogs", [auth, ownerMiddleWare], BlogsController.create);
+router.get("/api/blogs-search", BlogsController.search);
 
 router.get("/api/profile", [auth], UsersController.getProfile);
 router.patch("/api/update-profile", [auth], UsersController.updateProfile);

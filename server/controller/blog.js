@@ -51,7 +51,7 @@ class BlogsController {
     }
   }
 
-  async getBlogSearch(req, res) {
+  async search(req, res) {
     try {
       let { value = "", limit = 5 } = req.query;
       let text = value.trim();
@@ -64,8 +64,8 @@ class BlogsController {
       }
       const blog = await Blogs.find({
         $or: [
-          { title: { $regex: text, $options: "i" } },
-          { desc: { $regex: text, $options: "i" } },
+          { fname: { $regex: text, $options: "i" } },
+          { username: { $regex: text, $options: "i" } },
         ],
       }).limit(limit);
       if (!blog.length) {
